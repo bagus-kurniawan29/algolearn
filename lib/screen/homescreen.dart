@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Hi, John! 👋',
+              'Hi, Vee! 👋',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -52,18 +52,17 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               'Semangat belajar hari ini!',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
             ),
           ],
         ),
         const CircleAvatar(
-          radius: 24,
+          radius: 20,
           backgroundColor: Colors.grey,
           // Menggunakan gambar placeholder dari internet
-          backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+          backgroundImage: NetworkImage(
+            'https://i.pinimg.com/736x/28/da/a3/28daa3a203196c03fa4692f8e578630a.jpg',
+          ),
         ),
       ],
     );
@@ -94,7 +93,11 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.white.withOpacity(0.2),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.emoji_events, color: Colors.amber, size: 28),
+                child: const Icon(
+                  Icons.emoji_events,
+                  color: Colors.amber,
+                  size: 28,
+                ),
               ),
               const SizedBox(width: 16),
               const Column(
@@ -110,10 +113,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Text(
                     'Junior Coder',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
                   ),
                 ],
               ),
@@ -183,7 +183,10 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Searching',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
                       'Linear Search',
@@ -223,7 +226,11 @@ class HomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildTopikItem(Icons.data_object, 'Dasar\nAlgoritma', Colors.purple),
+            _buildTopikItem(
+              Icons.data_object,
+              'Dasar\nAlgoritma',
+              Colors.purple,
+            ),
             _buildTopikItem(Icons.search, 'Searching', Colors.green),
             _buildTopikItem(Icons.sort, 'Sorting', Colors.orange),
             _buildTopikItem(Icons.grid_view, 'Lainnya', Colors.grey),
@@ -301,10 +308,19 @@ class HomeScreen extends StatelessWidget {
       unselectedItemColor: Colors.grey,
       currentIndex: 0, // Posisi aktif di Beranda
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Beranda'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_filled),
+          label: 'Beranda',
+        ),
         BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'Materi'),
-        BottomNavigationBarItem(icon: Icon(Icons.edit_document), label: 'Latihan'),
-        BottomNavigationBarItem(icon: Icon(Icons.leaderboard), label: 'Peringkat'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.edit_document),
+          label: 'Latihan',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.leaderboard),
+          label: 'Peringkat',
+        ),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
       ],
     );
@@ -342,10 +358,6 @@ class _StatDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: 1,
-      color: Colors.grey.withOpacity(0.3),
-    );
+    return Container(height: 40, width: 1, color: Colors.grey.withOpacity(0.3));
   }
 }

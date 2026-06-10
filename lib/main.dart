@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screen/homescreen.dart'; // Mengimpor file homescreen.dart yang baru dibuat
+import 'screen/onboarding1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // Menjadikan HomeScreen sebagai tampilan awal aplikasi
-      home: const HomeScreen(), 
+      home: Onboarding1(),
     );
   }
 }
