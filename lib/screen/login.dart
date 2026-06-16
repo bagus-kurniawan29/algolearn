@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:algo_learn/screen/daftar1.dart';
+// 1. IMPORT: Pastikan mengimpor halaman pilihan materi kamu di sini
+import 'package:algo_learn/screen/pilihan_materi.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -9,7 +12,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _obscurePassword = true;
-  
+
   // Menambahkan controller untuk mengambil data input
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -38,7 +41,7 @@ class _LoginState extends State<Login> {
                   icon: const Icon(
                     Icons.arrow_back_ios,
                     size: 20,
-                    color: Colors.black, // Menggelapkan warna panah agar sesuai gambar
+                    color: Colors.black,
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -66,7 +69,7 @@ class _LoginState extends State<Login> {
               const Text(
                 'Masuk untuk melanjutkan',
                 style: TextStyle(
-                  fontSize: 16, 
+                  fontSize: 16,
                   color: Colors.grey,
                   fontWeight: FontWeight.w500,
                 ),
@@ -74,16 +77,16 @@ class _LoginState extends State<Login> {
 
               const SizedBox(height: 40),
 
-              // Input Email (Label disatukan ke dalam InputDecoration agar rapi)
+              // Input Email
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   labelStyle: const TextStyle(color: Colors.grey, fontSize: 16),
-                  floatingLabelBehavior: FloatingLabelBehavior.always, // Label tetap di atas
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
                   filled: true,
-                  fillColor: const Color(0xFFF9FAFB), // Warna background super light sesuai gambar
+                  fillColor: const Color(0xFFF9FAFB),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 18,
@@ -182,15 +185,30 @@ class _LoginState extends State<Login> {
               const SizedBox(height: 32),
 
               // Tombol Selanjutnya (Login)
+              // Tombol Selanjutnya (Login)
               ElevatedButton(
                 onPressed: () {
+                  // Jalankan print untuk cek di Debug Console
+                  print("Tombol Selanjutnya Berhasil Ditekan!");
+                  print("Email: ${_emailController.text}");
+                  print("Password: ${_passwordController.text}");
+
                   // Validasi sederhana sebelum proses login
-                  if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
+                  if (_emailController.text.isEmpty ||
+                      _passwordController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Email dan Password tidak boleh kosong!')),
+                      const SnackBar(
+                        content: Text('Email dan Password tidak boleh kosong!'),
+                      ),
                     );
                   } else {
-                    // Jalankan fungsi login kamu di sini
+                    // BERPINDAH HALAMAN: Menuju ke PilihanMateriPage
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PilihanMateri(),
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -218,7 +236,7 @@ class _LoginState extends State<Login> {
                 'atau masuk dengan',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.grey, 
+                  color: Colors.grey,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
@@ -240,7 +258,10 @@ class _LoginState extends State<Login> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
-                        border: Border.all(color: const Color(0xFFE5E7EB), width: 1), // Border tipis luar
+                        border: Border.all(
+                          color: const Color(0xFFE5E7EB),
+                          width: 1,
+                        ),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.03),
@@ -268,7 +289,10 @@ class _LoginState extends State<Login> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
-                        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+                        border: Border.all(
+                          color: const Color(0xFFE5E7EB),
+                          width: 1,
+                        ),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.03),
@@ -300,7 +324,13 @@ class _LoginState extends State<Login> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigasi ke halaman Register/Daftar
+                      // AKSI: Berpindah ke halaman Daftar1 saat teks "Daftar" ditekan
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Daftar1(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'Daftar',

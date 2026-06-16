@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:algo_learn/screen/onboarding2.dart';
+// 1. PERBAIKAN IMPORT: Pastikan mengarah ke file login kamu yang benar
+import 'package:algo_learn/screen/login.dart'; 
 
 class Onboarding1 extends StatelessWidget {
   const Onboarding1({super.key});
@@ -25,12 +27,19 @@ class Onboarding1 extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     onPressed: () {
-                      // Aksi ketika tombol kembali ditekan
+                      // Halaman pertama onboarding tidak bisa back
                     },
                   ),
+                  
+                  // PERBAIKAN: TextButton sudah dirapikan sintaksisnya
                   TextButton(
                     onPressed: () {
-                      // Aksi ketika tombol Lewati ditekan
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Login(), // PERBAIKAN: 'Login' gunakan huruf kapital sesuai nama class-nya
+                        ),
+                      );
                     },
                     child: const Text(
                       'Lewati',
@@ -76,22 +85,17 @@ class Onboarding1 extends StatelessWidget {
 
               const Spacer(flex: 1),
 
-              // Ilustrasi Gambar
-              // Catatan: Ganti dengan Image.asset('assets/onboarding_img.png') jika sudah ada gambarnya
+              // Gambar Ilustrasi
               Center(
                 child: Container(
-                  height: 220,
+                  height: 200,
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                        'https://placeholder.com/illustration',
-                      ), // Ganti dengan local asset kamu
+                      image: AssetImage('image/study.png'),
                       fit: BoxFit.contain,
                     ),
                   ),
-                  // Placeholder jika gambar belum dimasukkan ke assets
-                  child: const Icon(Icons.image, size: 100, color: Colors.grey),
                 ),
               ),
 
@@ -142,21 +146,17 @@ class Onboarding1 extends StatelessWidget {
                           const Onboarding2(),
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
-                            // Menggunakan FadeTransition untuk efek memudar
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                      // Mengatur durasi animasi fade (misal: 400 milidetik)
+                        return FadeTransition(
+                          opacity: animation,
+                          child: child,
+                        );
+                      },
                       transitionDuration: const Duration(milliseconds: 400),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(
-                    0xFF6366F1,
-                  ), // Warna ungu/biru sesuai gambar
+                  backgroundColor: const Color(0xFF6366F1), // Warna ungu/biru indigo
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),

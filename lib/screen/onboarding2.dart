@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:algo_learn/screen/onboarding3.dart';
+import 'package:algo_learn/screen/login.dart'; 
 
 class Onboarding2 extends StatelessWidget {
   const Onboarding2({super.key});
@@ -25,12 +26,19 @@ class Onboarding2 extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     onPressed: () {
-                      // Aksi ketika tombol kembali ditekan
+                      Navigator.pop(
+                        context,
+                      ); // Menutup Onboarding2 dan otomatis kembali ke Onboarding1
                     },
                   ),
                   TextButton(
                     onPressed: () {
-                      // Aksi ketika tombol Lewati ditekan
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Login(), // PERBAIKAN: 'Login' gunakan huruf kapital sesuai nama class-nya
+                        ),
+                      );
                     },
                     child: const Text(
                       'Lewati',
@@ -79,19 +87,16 @@ class Onboarding2 extends StatelessWidget {
               // Ilustrasi Gambar
               Center(
                 child: Container(
-                  height:
-                      240, // Sedikit disesuaikan dengan proporsi gambar kedua
+                  height: 200,
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(
-                        'https://placeholder.com/illustration2',
-                      ), // Ganti dengan local asset kamu
+                      image: AssetImage(
+                        'image/ceklist.png', // PERBAIKAN: Diubah dari 'assets/' ke 'image/' sesuai pubspec.yaml
+                      ),
                       fit: BoxFit.contain,
                     ),
                   ),
-                  // Placeholder jika gambar belum dimasukkan ke assets
-                  child: const Icon(Icons.image, size: 100, color: Colors.grey),
                 ),
               ),
 
